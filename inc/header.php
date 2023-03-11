@@ -30,27 +30,22 @@
                     <li><a href="index.php">Our Instructions</a></li>
                     <li><a href="index.php">Contact Us</a></li>
                 </ul>
-                <div class="collpase navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown" style="display:none;">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+            </div>
+            <div class="collpase navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown" style="display:none">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
                             role="button" aria-haspopup="true" aria-expanded="false">Settings 
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="admin_dashboard.php">Admin</a></li>
-                                <li><a href="logout.php">Logout</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="register.php">Register</a></li>
-                        <li><a href="login.php">Login</a></li>
-                    </ul>
-                </div>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin_dashboard.php">Admin</a></li>
+                            <li><a href="logout.php">Logout</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.php">Register</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
             </div>
         </div>
     </nav>
-
-    <div class="footer">
-        <p>Dance Academy</p>
-    </div>
-</body>
-</html>
