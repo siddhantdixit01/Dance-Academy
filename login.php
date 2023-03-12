@@ -80,8 +80,7 @@ if(isset($_POST['submit'])){
                             <label>Password</label>
                             <input type="password" name="password" class="form-control" required="" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn success-btn" style="width: 100%;">Login</button>
-                        
+                        <input type="submit" name="submit" value="Login now" class="btn success-btn" style="width: 100%;">
                         <p>Don't have an account? <a href="register.php">Register Now</a></p>
                     </form>
 

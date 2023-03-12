@@ -4,8 +4,8 @@ if(isset($_POST['submit'])){
     $username= mysqli_real_escape_string($conn, $_POST['username']);
     $email= mysqli_real_escape_string($conn, $_POST['email']);
     $mobile= mysqli_real_escape_string($conn, $_POST['mobile']);
-    $password= mysqli_real_escape_string($conn, $_POST['password']);
-    $conf_password= mysqli_real_escape_string($conn, $_POST['conf_password']);
+    $password= mysqli_real_escape_string($conn, sha1($_POST['password']));
+    $conf_password= mysqli_real_escape_string($conn, sha1($_POST['conf_password']));
     $user_role_id= $_POST['user_role_id'];
 
     $getUser= mysqli_query($conn, "SELECT * FROM tbl_users WHERE mobile= '$mobile'");
@@ -25,8 +25,6 @@ if(isset($_POST['submit'])){
 }
 }
 ?>
-
-
 
 <?php include('inc/header.php');?>
 <div class="container">
