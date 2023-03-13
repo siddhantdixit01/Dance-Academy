@@ -5,7 +5,26 @@
     if(!isset($admin_user_id)){
         header('location:login.php');
     }
-
+	if(isset($_POST['danceCategories'])){
+		$category_name=mysqli_real_escape_string($conn,$_POST['category_name']);
+		$tag_name=mysqli_real_escape_string($conn,$_POST['tag_name']);
+		$image=$_FILES['category_image']['name'];
+		$image_size=$_FILES['category_image']['size'];
+		$tmp_name=$_FILES['category_image']['tmp_name'];
+		$img_path='uplaods/categories/'.$image;
+	}
+	if (!empty($image)) {
+		if ($image_size>2000000) {
+			$message[]="image file size is too large";
+		}
+		else {
+			$insertCategory="insert into tbl_dance_categories(category_name,tag_name,category_image) values
+			('$category_name','$tag_name','$img_path')";
+			mysqli_query($conn,$insertCategory);
+			move_uploaded_file($tmp_name,$img_path);
+			header('location:danceCategories.php');
+		}
+	}
 ?>
 <?php include('inc/header.php');?>
     <div class="container">
@@ -75,7 +94,41 @@
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labledby="exampleModalLabel"
         aria-hidden="true">
-            
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h5 class="modal-title" id="exampleModalLabel">Add Dance Category</h5>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Category</label>
+							<input type="text" name="category_name" class="form-control" required="" 
+							placeholder="Category">
+						</div>
+						<div class="form-group">
+							<label>Tag Name</label>
+							<input type="text" name="tag_name" id="tag_name" class="form-control" required="" 
+							placeholder="Tag Name">
+						</div>
+						<div class="form-group">
+							<label>Upload Image</label>
+							<input type="file" name="category_image" class="form-control" required="" 
+							accept="image/jpg,image/jpeg,image/png">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" dat-dismiss="modal"
+						onclick="location.reload();">Close</button>
+						<input type="submit" name="danceCategories" value="Save Changes" class="btn btn-primary">
+					</div>
+                </div>
+            </div>
         </div>
     </div>
+	<script>
+		$('.nav-<?php echo isset($_GET['page']) ? $_GET['page']:'' ?>').addClass('active')
+	</script>
 <?php include('inc/footer.php');?>
