@@ -119,17 +119,7 @@
              </div>
             </form>
         </div>
-
-
-
-
-
-
-
-
-
-
-        
+  
     <script>
         $('.nav-<?php echo isset($_GET['page'])?$_GET['page']:'' ?>').addClass('active')
     </script>
