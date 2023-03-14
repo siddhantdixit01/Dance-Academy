@@ -1,8 +1,8 @@
 <?php include('config/db.php');?>
 <?php session_start();?>
 <?php
-    $admin_user_id = $_SESSION['admin_user_id'];
-    if(!isset($admin_user_id)){
+    $student_user_id = $_SESSION['student_user_id'];
+    if(!isset($student_user_id)){
         header('location:login.php');
     }
 
@@ -20,7 +20,7 @@
               <div class="row">
                     <div class="col-md-5">
                         <?php
-                        $user_id = $_SESSION['student_user_ud'];
+                        $user_id = $_SESSION['student_user_id'];
                         $sql= "SELECT * FROM tbl_students WHERE user_id = $user_id";
                         $data = mysqli_query($conn, $sql);
                          if(mysqli_num_rows($data) > 0){
@@ -67,7 +67,7 @@
                     <div class="col-md-7">
                         <ul class="list-group">
                             <?php
-                            $user_id = $_session['student_user_id'];
+                            $user_id = $_SESSION['student_user_id'];
                             $sql = "SELECT * FROM tbl_students WHERE user_id = $user_id";
                             $data = mysqli_query($conn, $sql);
                             if(mysqli_num_rows($data) > 0){

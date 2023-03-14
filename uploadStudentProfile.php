@@ -11,7 +11,7 @@
         $age = mysqli_real_escape_string($conn, $_POST['age']);
         $gender = mysqli_real_escape_string($conn, $_POST['gender']);
         $address = mysqli_real_escape_string($conn, $_POST['address']);
-        $student_role_id =  $_SESSION['student_role_id'];
+        $student_role_id =  $_SESSION['student_rol_id'];
         $image= $_FILES['student_image']['name'];
         $image_size= $_FILES['student_image']['size'];
         $tmp_name= $_FILES['student_image']['tmp_name'];
@@ -22,15 +22,14 @@
                 $message[] = 'image file size is too large';
                 
             }else{
-                $studentProfile = "INSERT INTO tbl_students(user_id, student_name, age, gender, user_role_id, address, student_image,doj) VALUES('$user_id', '$student_name', '$age', '$gender', '$student_role_id', $address', '$img_path' ,'$doj')";
+                $studentProfile = "INSERT INTO tbl_students(user_id, student_name, age, gender, user_role_id, address, student_image, doj) 
+                VALUES('$user_id', '$student_name', '$age', '$gender', '$student_role_id', '$address', '$img_path' ,'$doj')";
                   mysqli_query($conn, $studentProfile);
                   move_uploaded_file($tmp_name, $img_path);
                   header('location:student_dashboard.php');
 
             }
         }
-
-
     }
 
 ?>
@@ -106,7 +105,7 @@
                   <div class="row" style="padding: 0px 30px;">
                   <div class="col-md-5">
                             <div class="form-group">
-                                <input type="submit" name="submitStudentData" vlaue="Upload Profile" class="btn btn-success">
+                                <input type="submit" name="submitStudentData" value="Upload Profile" class="btn btn-success">
                                   
 
                             </div>
@@ -119,7 +118,17 @@
              </div>
             </form>
         </div>
-  
+
+
+
+
+
+
+
+
+
+
+        
     <script>
         $('.nav-<?php echo isset($_GET['page'])?$_GET['page']:'' ?>').addClass('active')
     </script>

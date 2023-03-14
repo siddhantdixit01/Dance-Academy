@@ -27,7 +27,7 @@
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="services.php">Our Services</a></li>
-                    <li><a href="instructions.php">Our Instructions</a></li>
+                    <li><a href="staff.php">Our Instructions</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
                 </ul>
             </div>
