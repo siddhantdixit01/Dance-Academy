@@ -1,6 +1,6 @@
 
-<div class="footer">
-        <p>Dance Academy</p>
-    </div>
-</body>
+        <div class="footer">
+            <p>Dance Academy</p>
+        </div>
+    </body>
 </html>

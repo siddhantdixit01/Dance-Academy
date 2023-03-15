@@ -1,3 +1,3 @@
 <?php
-    $conn = mysqli_connect('localhost','root','','danceAcademy') or die('Connection failure');
+    $conn = mysqli_connect('localhost','root','','danceacademy') or die('Connection failure');
 ?>

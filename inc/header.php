@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="text/javascript" src="assets/js/jquery-3.6.4.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <style>
+        .enrollBox{
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: -webkit-fill-available;
+            padding: 15px;
 
+        }
+    </style>
     <title>Dance Academy | Home Page</title>
 </head>
 <body>

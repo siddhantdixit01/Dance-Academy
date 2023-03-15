@@ -5,13 +5,13 @@
     if(!isset($admin_user_id)){
         header('location:login.php');
     }
-	if(isset($_POST['danceCategories'])){
+	if(isset($_POST['danceCategory'])){
 		$category_name=mysqli_real_escape_string($conn,$_POST['category_name']);
 		$tag_name=mysqli_real_escape_string($conn,$_POST['tag_name']);
 		$image=$_FILES['category_image']['name'];
 		$image_size=$_FILES['category_image']['size'];
 		$tmp_name=$_FILES['category_image']['tmp_name'];
-		$img_path='uplaods/categories/'.$image;
+		$img_path='uploads/categories/'.$image;
         if (!empty($image)) {
             if ($image_size > 2000000) {
                 $message[]='image file size is too large';
@@ -91,7 +91,7 @@
                                         data-val=<?php echo $row['category_id'];?> data-toggle="modal" data-target="#editCategory">
                                             <i class="fa fa-edit"></i>Edit
                                         </a>
-                                        <a href="" class="btn-sm btn-danger editCategory" 
+                                        <a href="" class="btn-sm btn-danger deleteCategory" 
                                         data-val=<?php echo $row['category_id'];?>>
                                             <i class="fa fa-trash"></i>Delete
                                         </a>
@@ -111,43 +111,43 @@
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labledby="exampleModalLabel"
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
 					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+                            Add Dance Category
+                        </h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h5 class="modal-title" id="exampleModalLabel">Add Dance Category</h5>
 					</div>
-                    <div class="modal-body">
-                        <form method="post "action="danceCategories.php" enctype="multipart/form-data">
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <input type="text" name="category_name" class="form-control" required="" 
-                                    placeholder="Category">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tag Name</label>
-                                    <input type="text" name="tag_name" id="tag_name" class="form-control" 
-                                    required="" placeholder="Tag Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Upload Image</label>
-                                    <input type="file" name="category_image" class="form-control" required="" 
-                                    accept="image/jpg, image/png, image/jpeg">
-                                </div>
+                    <form method="post" action="danceCategories.php" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <input type="text" name="category_name" class="form-control" required="" 
+                                placeholder="Category">
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                onclick="location.reload();">Close</button>
-                                <input type="submit" name="danceCategories" value="Save Changes" 
-                                class="btn btn-primary">
+                            <div class="form-group">
+                                <label>Tag Name</label>
+                                <input type="text" name="tag_name" id="tag_name" class="form-control" 
+                                required="" placeholder="Tag Name">
                             </div>
-                        </form>
-                    </div>
+                            <div class="form-group">
+                                <label>Upload Image</label>
+                                <input type="file" name="category_image" class="form-control" required="" 
+                                accept="image/jpg, image/png, image/jpeg">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            onclick="location.reload();">Close</button>
+                            <input type="submit" name="danceCategory" value="Save Changes" 
+                            class="btn btn-primary">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

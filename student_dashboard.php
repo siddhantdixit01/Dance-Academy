@@ -10,7 +10,7 @@
 <?php include('inc/header.php');?>
     <div class="container">
         <div class="col-md-3">
-            <?php include('sidebar/adminSidebar.php');?>
+            <?php include('sidebar/studentSidebar.php');?>
 
         </div>
         <div class="col-md-9">
