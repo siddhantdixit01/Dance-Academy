@@ -65,7 +65,7 @@
                         <td colspan="100px">No students registered yet!</td>
                     </tr>
                     <?php
-                }
+                }?>
             </tbody>
 
         </table>
