@@ -1,3 +1,5 @@
+<?php include('config/db.php');?>
+<?php session_start();?>
 <?php include('inc/header.php');?>
     <div class="container" style="width:100%">
         <div id="myCarousel" class="carousel slide" data-ride="carousel" >
@@ -57,9 +59,9 @@
                                         <div class="category_name">
                                          <span style=""><?php echo $row['category_name'];?></span>
                                         </div>
-                                        <a href="viewDanceForms.php?id=<?php echo $category_id;?>" class="btn btn-warning" style="background: #922bc0; border-color: #922bc0;">View Dance Forms</a>
-
-
+                                        <a href="viewDanceForms.php?id=<?php echo $category_id;?>" 
+                                        class="btn btn-warning" style="background: #922bc0; border-color: #922bc0;">
+                                        View Dance Forms</a>
                             </div>
                         </div>
 
@@ -88,7 +90,7 @@
             tbl_dance_forms.dance_name, tbl_dance_categories.category_name
             FROM tbl_dance_forms
             JOIN tbl_dance_categories ON tbl_dance_categories.category_id = tbl_dance_forms.category_id
-            WHERE tbl_dance_forms.tag_name = 'Popular'";
+            WHERE tbl_dance_forms.tag_name = 'Popular'or tbl_dance_forms.tag_name = 'Trending'";
             $getDance = mysqli_query($conn, $sql);
                  if(mysqli_num_rows($getDance) > 0){
                     while($row = mysqli_fetch_assoc($getDance)){
@@ -175,18 +177,22 @@
             <div class= "logo-slider">
                 <?php
                 include('config/db.php');
-                $sql = "SELECT tbl_students.student_id, tbl_students.student_name, tbl_feedback.feedback, tbl_students.student_image FROM tbl_feedback JOIN tbl_students ON tbl_students.user_id = tbl_feedback.user_id";
+                $sql = "SELECT tbl_students.student_id, tbl_students.student_name, tbl_feedback.feedback, 
+                tbl_students.student_image FROM tbl_feedback JOIN tbl_students ON 
+                tbl_students.user_id = tbl_feedback.user_id";
                 $testimonals = mysqli_query($conn, $sql);
                 if(mysqli_num_rows($testimonals)> 0){
                     while($row = mysqli_fetch_assoc($testimonals)){
                         ?>
-                    <div class="col-md-4" style="margin-top: 10px;">
-                        <div class="category-box" style="border:0px;">
-                        <img src=<?php echo $row['student_image'];?> style="width:50%; margin: 0 auto; border-radius: 50%;"  alt="Dance">
-                            <div class="category_name">
-                            <span style="display: block; color: #000; padding: 0px 7px;"><?php echo $row['feedback'];?>
-                            </span>
-                            <span style="color: #000; font-size: 13px !imprtant;">
+                        <div class="col-md-4" style="margin-top: 10px;">
+                            <div class="category-box" style="border:0px;">
+                                <img src=<?php echo $row['student_image'];?> style="width:50%; margin: 0 auto; 
+                                border-radius: 50%;"  alt="Dance">
+                                <div class="category_name">
+                                    <span style="display: block; color: #000; padding: 0px 7px;">
+                                        <?php echo $row['feedback'];?>
+                                    </span>
+                            <span style="color: #000; font-size: 13px !important;">
                             <?php echo $row['student_name'];?>
                             </span>
 

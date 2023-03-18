@@ -16,9 +16,7 @@
         <?php } ?>
        <?php } ?>
     </div>
-    <div class="row" style="padding:15px 15px;
-    width: 960px;
-    margin:  0 auto;">
+    <div class="row" style="padding:15px 15px; width: 960px;margin:  0 auto;">
     <?php
         $id = $_GET['id'];
         $sql= "SELECT * FROM tbl_dance_forms WHERE category_id = $id";

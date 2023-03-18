@@ -76,6 +76,7 @@
     </style>
 </head>
 <body>
+    
     <nav class="navbar navbar-default">
         <div class="container-fluid" style="padding-left:25px;">
             <div class="navbar-header">
@@ -130,19 +131,21 @@
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </li>
-                    <?php } elseif ((!isset($_SESSION['admin_user_id'])|| 
-                        !isset($_SESSION['instructor_user_id']) || 
-                        !isset($_SESSION['student_user_id'])) && 
-                        ($url=='http://localhost/danceAcademy/login.php')) {?>
-                        <li><a href="register.php">Register</a></li>
-                    <?php } elseif ((!isset($_SESSION['student_user_id'])|| 
-                        !isset($_SESSION['instructor_user_id']) || 
-                        !isset($_SESSION['admin_user_id'])) && 
-                        ($url=='http://localhost/danceAcademy/register.php')) {?>
+                    <?php 
+                        } 
+                        if (!isset($_SESSION['student_user_id'])&& 
+                        !isset($_SESSION['instructor_user_id']) &&
+                        !isset($_SESSION['admin_user_id'])) {?>
                         <li><a href="login.php">Login</a></li>
-                    <?php } ?>
+                    <?php }
+                        if (!isset($_SESSION['admin_user_id'])&&
+                        !isset($_SESSION['instructor_user_id']) && 
+                        !isset($_SESSION['student_user_id']) ) {
+                    ?>
+                        <li><a href="register.php">Register</a></li>
+                    
 
-                    <?php
+                    <?php }
                     $url = 'http://' .$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
                     if($url == "http://127.0.0.1/danceacademy/login.php"){?>
                     <li><a href="register.php">Register</a></li>

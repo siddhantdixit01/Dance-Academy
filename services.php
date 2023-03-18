@@ -26,7 +26,7 @@
                     </span>
 
                    </div>
-                   <a href=viewDanceForms.php?id =<?php echo $category_id;?> class=" btn btn-warning" style="background: #922bc0; border-color: #922bc0;">View Dance Forms</a>
+                   <a href="viewDanceForms.php?id=<?php echo $category_id;?>" class=" btn btn-warning" style="background: #922bc0; border-color: #922bc0;">View Dance Forms</a>
                  </div>
 
                 </div>

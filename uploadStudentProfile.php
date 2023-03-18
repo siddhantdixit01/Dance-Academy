@@ -11,7 +11,7 @@
         $age = mysqli_real_escape_string($conn, $_POST['age']);
         $gender = mysqli_real_escape_string($conn, $_POST['gender']);
         $address = mysqli_real_escape_string($conn, $_POST['address']);
-        $student_role_id =  $_SESSION['student_rol_id'];
+        $student_role_id =  $_SESSION['student_role_id'];
         $image= $_FILES['student_image']['name'];
         $image_size= $_FILES['student_image']['size'];
         $tmp_name= $_FILES['student_image']['tmp_name'];
@@ -30,6 +30,8 @@
 
             }
         }
+
+
     }
 
 ?>
@@ -128,7 +130,7 @@
 
 
 
-        
+</div>    
     <script>
         $('.nav-<?php echo isset($_GET['page'])?$_GET['page']:'' ?>').addClass('active')
     </script>

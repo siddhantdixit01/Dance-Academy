@@ -26,18 +26,15 @@
             header('location:index.php');
         }else{
             $message[] = 'Failed to enroll!';
-        }
-        
+        }  
     }
-
-    ?>
-    <?php include('inc/header.php');?>
-    <div class="container">
-
+?>
+<?php include('inc/header.php');?>
+<div class="container">
     <div class="row">
         <h1 style="text-align: center; margin: 30px;"> ENROLL WITH US</h1>
-
-    </div class="section">
+    </div>
+    <div class="section">
         <div class="enrollBox">
             <form class="form-horizontal" method="post">
                 <div class="row">
@@ -48,67 +45,62 @@
                             $user_role_id= $_SESSION['student_role_id'];
                             $category_id= $_GET['cat_id'];
                             $dance_id= $_GET['did'];
-                            $sql= "SELECT tbl_dance_categories.category_name, tbl_dance_forms.dance_name, tbl_dance_forms.price
-                            FROM tbl_dance_categories
-                            JOIN tbl_dance_forms ON tbl_dance_forms. 
-                               category_id = tbl_dance_categories. 
-                               category_id
-                               WHERE tbl_dance_categories.category_id = $category_id AND tbl_dance_forms.dance_id = $dance_id";
+                            $sql= "SELECT tbl_dance_categories.category_name, tbl_dance_forms.dance_name, 
+                                tbl_dance_forms.price FROM tbl_dance_categories JOIN tbl_dance_forms ON 
+                                tbl_dance_forms.category_id = tbl_dance_categories.category_id WHERE 
+                                tbl_dance_categories.category_id = $category_id AND 
+                                tbl_dance_forms.dance_id = $dance_id";
                             $getData = mysqli_query($conn, $sql);
                             if(mysqli_num_rows($getData) > 0){
-                                while($row = mysqli_fetch_assoc($getData)){?>
+                                while($row = mysqli_fetch_assoc($getData)){
+                        ?>
                             
-                            <label> Student Name</label>
-                            <input type="text" name="student_name" value="<?php echo $username;?>" class="form-control">
+                                    <label> Student Name</label>
+                                    <input type="text" name="student_name" value="<?php echo $username;?>" 
+                                        class="form-control">
 
-                            <label style="margin-top:20px;"> Category Name</label>
-                            <input type="text" value="<?php echo $row['category_name'];?>" class="form-control">
-                            <input type="hidden" name="category_id" value="<?php echo $category_id;?>">
+                                    <label style="margin-top:20px;"> Category Name</label>
+                                    <input type="text" value="<?php echo $row['category_name'];?>" 
+                                    class="form-control">
+                                    <input type="hidden" name="category_id" value="<?php echo $category_id;?>">
 
-                            <label style="margin-top:20px;"> Dance Form</label>
-                            <input type="text" name="dance_id" value="<?php echo $row['dance_name'];?>" class="form-control">
-                            <input type="hidden" name="dance_id" value="<?php echo $dance_id;?>">
+                                    <label style="margin-top:20px;"> Dance Form</label>
+                                    <input type="text" name="dance_id" value="<?php echo $row['dance_name'];?>" 
+                                    class="form-control">
+                                    <input type="hidden" name="dance_id" value="<?php echo $dance_id;?>">
 
-                            <label style="margin-top:20px;"> Fees</label>
-                            <input type="text" name="price" value="<?php echo $row['price'];?>" class="form-control">
+                                    <label style="margin-top:20px;"> Fees</label>
+                                    <input type="text" name="price" value="<?php echo $row['price'];?>" 
+                                    class="form-control">
 
-                            <label style="margin-top:20px;"> Address</label>
-                            <textarea name="address" class="form-control" cols="4" rows="30" placeholder="Address"></textarea>
-                            
-
-
-
-
-                            <?php } ?>
-                        <?php } ?>
-
-                            
-
-                        
-
+                                    <label style="margin-top:20px;"> Address</label>
+                                    <textarea name="address" class="form-control" cols="4" rows="30" 
+                                    placeholder="Address"></textarea>
+                        <?php 
+                                } 
+                            } 
+                        ?>
                     </div>
                     <div class="col-md-6">
                         <ul>
-                         <?php
-                           $sql =" SELECT * FROM tbl_instructor_dance_forms JOIN tbl_instructors ON tbl_instructor_dance_forms.user_id= tbl_instructors.user_id
-                           WHERE tbl_instructor_dance_forms.dance_id= $dance_id";
-                                                       $getInstructors = mysqli_query($conn, $sql);
-                                                       if(mysqli_num_rows($getInstructors) >0){
-                                                          while($row= mysqli_fetch_assoc($getInstructors)){?>
-                                                          <li style="display: inline-block;">
-                                                             <img src="<?php echo $row['instructor_image'];?>" style="width:75px;">
-                                                             <span style="display: block; font-size: 10px;
-                                                             margin-top: 10px; "><?php echo $row['instructor_name'];?>
-                                                             </span>
-                                                        
-                                                        </li>
-
-                                                          <?php }?>
+                            <?php
+                                $sql ="SELECT * FROM tbl_instructor_dance_forms JOIN tbl_instructors ON 
+                                    tbl_instructor_dance_forms.user_id= tbl_instructors.user_id WHERE 
+                                    tbl_instructor_dance_forms.dance_id= $dance_id";
+                                $getInstructors = mysqli_query($conn, $sql);
+                                if(mysqli_num_rows($getInstructors) >0){
+                                    while($row= mysqli_fetch_assoc($getInstructors)){
+                            ?>
+                                        <li style="display: inline-block;">
+                                            <img src="<?php echo $row['instructor_image'];?>" 
+                                                style="width:75px;">
+                                            <span style="display: block; font-size: 10px; margin-top: 10px; ">
+                                                <?php echo $row['instructor_name'];?>
+                                            </span>
+                                        </li>
+                                <?php 
+                                    }?>
                                                         <?php } ?>
-
-                                                       
-                           
-                        
                         </ul>
 
                         <label>Instructor Name</label>

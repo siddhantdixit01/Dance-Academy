@@ -14,7 +14,7 @@
         $getInstructors = mysqli_query($conn,$sql);
         if(mysqli_num_rows($getInstructors)> 0){
             while($row = mysqli_fetch_assoc($getInstructors)){
-                $category_id = $row['category_id'];
+                $category_id = $row['instructor_id'];
                 ?>
                 <div class="col-md-4" style="margin-top: 10px;">
                  <div class="category-box">

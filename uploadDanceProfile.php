@@ -16,8 +16,8 @@
         $image= $_FILES['instructor_image']['name'];
         $image_size= $_FILES['instructor_image']['size'];
         $tmp_name= $_FILES['instructor_image']['tmp_name'];
-        $img_path= 'uploads/instructorss/'.$image;
-        $doj= date('Y/m/d');
+        $img_path= 'uploads/instructors/'.$image;
+        $doj= date('mm/dd/yyyy');
         if(!empty($image)){
             if($image_size > 2000000){
                 $message[] = 'image file size is too large';
@@ -47,102 +47,68 @@
             <form method="post" action="uploadDanceProfile.php" enctype="multipart/form-data">
              <div class="box">
                 <div class="row" style="padding: 0px 30px; margin-bottom: 10px; ">
-                     <div class="col-md-5">
+                    <div class="col-md-5">
                         <div class="form-group">
                             <label>Age</label>
                             <input type="text" name="age" class="form-control" required="" placeholder="Age">
 
                         </div>
-
-                     </div>  
-                     <div class="col-md-5">
+                    </div>  
+                    <div class="col-md-5">
                         <div class="form-group">
                             <label>Gender</label>
                             <select name="gender" class="form-control">
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
-                            
-
                         </div>
-                        
-
-                     </div>
-
+                    </div>
                 </div>
-                  <div class="row" style="padding: 0px 30px;">
-                  <div class="col-md-5">
-                  <div class="form-group">
+                <div class="row" style="padding: 0px 30px;">
+                    <div class="col-md-5">
+                        <div class="form-group">
                             <label>Experience</label>
-                            <input type="text" name="experience" class="form-control" required="" placeholder="Experience">
-
+                            <input type="text" name="experience" class="form-control" 
+                            required="" placeholder="Experience">
                         </div>
-                       
-
-                  </div>
-                  <div class="col-md-5">
-                  <div class="form-group">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
                             <label>Address</label>
-                           <textarea class="form-control" name="address" placeholder="Address"></textarea>
-
+                            <textarea class="form-control" name="address" placeholder="Address"></textarea>
                         </div>
-                       
-
-                  </div>
-
-
-                  </div>
-                  
-                  <div class="row" style="padding: 0px 30px;">
-                  <div class="col-md-5">
-                  <div class="form-group">
+                    </div>
+                </div>
+                <div class="row" style="padding: 0px 30px;">
+                    <div class="col-md-5">
+                        <div class="form-group">
                             <label>Date of Joining</label>
-                            <input type="text" name="doj" id="datepicker" class="form-control" required="" placeholder="Date of Join">
-
+                            <input type="date" name="doj" id="datepicker" class="form-control" 
+                            required="" placeholder="Date of Join">
                         </div>
-                       
-
-
-                  <div class="row" style="padding: 0px 30px;">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label>Upload Image</label>
-                                <input type="file" name="instructor_image" class="form-control">
-                                  
-
-                            </div>
-                            
-
+                    </div>
+                </div>
+                <div class="row" style="padding: 0px 30px;">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>Upload Image</label>
+                            <input type="file" name="instructor_image" class="form-control"
+                            accept="image/jpg,image/jpeg,image/png">
                         </div>
-
-                  </div>
-                  <div class="row" style="padding: 0px 30px;">
-                  <div class="col-md-5">
-                            <div class="form-group">
-                                <input type="submit" name="submitProfile" vlaue="Upload Profile" class="btn btn-success">
-                                  
-
-                            </div>
-                            
-
+                    </div>
+                </div>
+                <div class="row" style="padding: 0px 30px;">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="submit" name="submitProfile" 
+                            vlaue="Upload Profile" class="btn btn-success">
                         </div>
-
-                  </div>
-
-             </div>
-            </form>
-        </div>
-
-
-
-
-
-
-
-
-
-
-        
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>    
+    </div>
     <script>
         $('.nav-<?php echo isset($_GET['page'])?$_GET['page']:'' ?>').addClass('active')
     </script>

@@ -38,7 +38,7 @@
                             }
                             else{ ?>
                             <p style="text-align: center;"><img src="assets/img/avatar.jpg"
-                            style= "width: 30p%; border-radius: 50%;border: 1px solid #FFF;">
+                            style= "width: 30%; border-radius: 50%;border: 1px solid #FFF;">
                             </p>
                             <h2 style="text-align: center;"><?php echo $_SESSION['username'];?>
                             </h2>

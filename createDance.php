@@ -1,8 +1,7 @@
 <?php 
 include('config/db.php');
 session_start();
-    $admin_user_id = $_SESSION['admin_user_id'];
-    if(!isset($admin_user_id)){
+    if(!isset($_SESSION['admin_user_id'])&&!isset($_SESSION['instructor_user_id'])){
         header('location:login.php');
     }
     if(isset($_POST['addDance'])){
@@ -54,7 +53,14 @@ session_start();
 <?php include('inc/header.php');?>
     <div class="container">
         <div class="col-md-3">
-            <?php include('sidebar/adminSidebar.php');?>
+            <?php 
+                if(isset($_SESSION['admin_user_id'])){
+                    include('sidebar/adminSidebar.php');
+                }
+                else{
+                    include('sidebar/instructorSidebar.php');
+                }
+            ?>
         </div>
         <div class="col-md-9">
             <div class="row" style="margin-left:1px;margin-top:18px;">

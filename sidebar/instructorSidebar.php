@@ -6,7 +6,7 @@
     </a>
     <a href="uploadDanceProfile.php?page=uploadDanceProfile" class="nav-item nav-uploadDanceProfile">
         <span class="icon-field"><i class="fa fa-upload"></i>
-        </span>Upload Dance Profile
+        </span>Upload Instructor Profile
     </a>
     <a href="createDance.php?page=createDance" class="nav-item nav-createDance">
         <span class="icon-field"><i class="fa fa-plus"></i>
