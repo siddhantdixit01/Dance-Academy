@@ -1,6 +1,6 @@
-<?php include('config/db.php');?>
-<?php session_start();?>
-<?php
+<?php 
+    include('config/db.php');
+    session_start();
     $category_id=$_POST['id'];
     $getUrl="SELECT category_image FROM tbl_dance_categories WHERE category_id='$category_id'";
     $result=mysqli_query($conn,$getUrl);

@@ -31,13 +31,13 @@
 		$image=$_FILES['category_image']['name'];
 		$image_size=$_FILES['category_image']['size'];
 		$tmp_name=$_FILES['category_image']['tmp_name'];
-		$img_path='uplaods/categories/'.$image;
+		$img_path='uploads/categories/'.$image;
         if (!empty($image)) {
             if ($image_size > 2000000) {
                 $message[]='image file size is too large';
             }else{
                 $updateCategory = "UPDATE tbl_dance_categories SET category_name='$category_name',
-                category_image='$img_path',tag_name='$tag_name' category_id='$category_id'";
+                category_image='$img_path',tag_name='$tag_name' WHERE category_id='$category_id'";
                 mysqli_query($conn,$updateCategory);
                 move_uploaded_file($tmp_name,$img_path);
                 header('location:danceCategories.php');
@@ -88,7 +88,8 @@
                                     </td>
                                     <td style="width:25%;" class="actions">
                                         <a href="" class="btn-sm btn-primary editCategory" 
-                                        data-val=<?php echo $row['category_id'];?> data-toggle="modal" data-target="#editCategory">
+                                        data-val=<?php echo $row['category_id'];?> data-toggle="modal" 
+                                        data-target="#editCategory">
                                             <i class="fa fa-edit"></i>Edit
                                         </a>
                                         <a href="" class="btn-sm btn-danger deleteCategory" 
@@ -156,16 +157,16 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Edit Dance Category
+                            </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" 
                             onclick="window.location.reload();">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Edit Dance Category
-                            </h5>
                         </div>
                         <div class="modal-body">
-                            <form action="danceCategories.php" method="post" enctype="multipart/form-data">
+                            <form method="post" action="danceCategories.php" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     <input type="hidden" name="category_id" id="category_id">
                                     <div class="form-group">
@@ -185,16 +186,16 @@
                                         accept="image/jpg,image/png,image/jpeg">
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-							onclick="window.location.reload();">Close</button>
-							<input type="submit" name="updDanceCategories" value="Update Changes" 
-                            class="btn btn-primary">
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                onclick="window.location.reload();">Close</button>
+                                <input type="submit" name="updDanceCategories" value="Update Changes" 
+                                class="btn btn-primary">
+                            </div>
+                        </form>
                     </div>
-                </div>
+                </div> 
         </div>
     </div>
 	<script>
@@ -204,7 +205,7 @@
 
 <script type="text/javascript">
     $('.editCategory').click(function(){
-        var id=$('this').attr('data-val');
+        var id=$(this).attr('data-val');
         $.ajax({
             url:"updateCategories.php",
             type:"POST",
@@ -213,7 +214,7 @@
                 id:id,
             },
             cache: false,
-            success:function(data){
+            success: function(data){
                 var jsonData=$.parseJSON(data);
                 $('#category_id').val(jsonData.category_id);
                 $('#category_name').val(jsonData.category_name);
@@ -223,7 +224,7 @@
         });
     })
     $('.deleteCategory').click(function(){
-        var id=$('this').attr('data-val');
+        var id=$(this).attr('data-val');
         $.ajax({
             url:"deleteCategory.php",
             type:"POST",

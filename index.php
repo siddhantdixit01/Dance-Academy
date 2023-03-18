@@ -125,4 +125,88 @@
 
     </div>
 
+
+
+<div class="wrapper">
+        <div class="row">
+        <h2 style="text-align: center; margin-top: 45px; margin-bottom: 15px;">COACHES & INSTRUCTORS</h2>
+        </div>
+        <div class="row">
+            <div class= "logo-slider">
+                <?php
+                include('config/db.php');
+                $sql = "SELECT * FROM tbl_instructors";
+                $getInstructors = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($getInstructors)> 0){
+                    while($row = mysqli_fetch_assoc($getInstructors)){
+                        ?>
+                    <div class="col-md-4" style="margin-top: 10px;">
+                        <div class="category-box">
+                        <img src=<?php echo $row['instructor_image'];?> style="width:50%; margin: 0 auto; border-radius: 50%;"  alt="Dance">
+                            <div class="category_name" style="background: #922bc0;">
+                            <span style="display: block; color: #FFF;"><?php echo $row['instructor_name'];?></span>
+                            <span style="color: #FFF;">Experience: <?php echo $row['experience'];?> Years</span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                   <?php }
+
+                }
+
+            ?>
+
+            </div>
+
+        </div>
+</div>
+
+
+
+
+<div class="row">
+        <h2 style="text-align: center; margin-top: 45px; margin-bottom: 15px;">STUDENTS FEEDBACK</h2>
+        </div>
+        <div class="container" style="background: #FFF;padding: 0px;"> 
+        <div class="row">
+            <div class= "logo-slider">
+                <?php
+                include('config/db.php');
+                $sql = "SELECT tbl_students.student_id, tbl_students.student_name, tbl_feedback.feedback, tbl_students.student_image FROM tbl_feedback JOIN tbl_students ON tbl_students.user_id = tbl_feedback.user_id";
+                $testimonals = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($testimonals)> 0){
+                    while($row = mysqli_fetch_assoc($testimonals)){
+                        ?>
+                    <div class="col-md-4" style="margin-top: 10px;">
+                        <div class="category-box" style="border:0px;">
+                        <img src=<?php echo $row['student_image'];?> style="width:50%; margin: 0 auto; border-radius: 50%;"  alt="Dance">
+                            <div class="category_name">
+                            <span style="display: block; color: #000; padding: 0px 7px;"><?php echo $row['feedback'];?>
+                            </span>
+                            <span style="color: #000; font-size: 13px !imprtant;">
+                            <?php echo $row['student_name'];?>
+                            </span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                   <?php }
+
+                }
+
+            ?>
+
+            </div>
+
+        </div>
+
+
+
+
 <?php include('inc/footer.php')?>

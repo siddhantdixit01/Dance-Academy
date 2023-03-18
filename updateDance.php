@@ -3,7 +3,7 @@
     session_start();
     $dance_id=$_POST['id'];
     $sql="SELECT * FROM tbl_dance_forms JOIN tbl_dance_categories ON 
-    tbl_dance_categories.categor_id=tbl_dance_forms.category_id WHERE dance_id='$dancee_id'";
+    tbl_dance_categories.category_id=tbl_dance_forms.category_id WHERE dance_id='$dance_id'";
     $updateDance=mysqli_query($conn,$sql);
     if(mysqli_num_rows($updateDance)>0){
         while($row=mysqli_fetch_assoc($updateDance)){

@@ -1,6 +1,6 @@
-<?php include('config/db.php');?>
-<?php session_start();?>
-<?php
+<?php 
+    include('config/db.php');
+    session_start();
     $category_id=$_POST['id'];
     $sql="SELECT * FROM tbl_dance_categories WHERE category_id='$category_id'";
     $getCategories=mysqli_query($conn,$sql);
@@ -13,5 +13,6 @@
                 'category_image'=>$row['category_image'],
             );
         }
+        echo json_encode($data);
     }
 ?>

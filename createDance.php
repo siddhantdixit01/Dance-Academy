@@ -42,7 +42,7 @@ session_start();
                 
             }else{
                 $updateDance = "UPDATE tbl_dance_forms SET dance_name='$dance_name', category_id='$category_id',
-                 price='$price', dance_image='$image_path' WHERE dance_id='$dance_id'";
+                 price='$price', dance_image='$img_path' WHERE dance_id='$dance_id'";
                   mysqli_query($conn, $updateDance);
                   move_uploaded_file($tmp_name, $img_path);
                   header('location:createDance.php');
@@ -191,6 +191,7 @@ session_start();
                         <div class="modal-body">
                             <form method="post" action="createDance.php" enctype="multipart/form-data">
                                 <div class="modal-body">
+                                    <input type="hidden" name="dance_id" id="dance_id">
                                     <div class="form-group">
                                         <label>Dance Form</label>
                                         <input type="text" name="dance_name" id="dance_name" 
@@ -198,7 +199,7 @@ session_start();
                                     </div>
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <input type="hidden" name="category_id">
+                                        <input type="hidden" name="category_id" id="category_id">
                                         <select name="category_id" id="category_id" class="form-control">
                                             <option value="">Select</option>
                                             <?php 
@@ -245,7 +246,7 @@ session_start();
 		$('.nav-<?php echo isset($_GET['page']) ? $_GET['page']:'' ?>').addClass('active')
 	</script>
 <?php include('inc/footer.php');?>
-<script>
+<script type="text/javascript">
     $('.editDance').click(function(){
         var id=$(this).attr('data-val');
         $.ajax({
@@ -253,16 +254,16 @@ session_start();
             type: "POST",
             data: {
                 type:1,
-                id=id,
+                id:id,
             },
             cache: false,
             success: function(data){
                 var jsonData=$.parseJSON(data);
-                #('#dance_id').val(jsonData.dance_id);
-                #('#category_id').val(jsonData.category_id);
-                #('#dance_name').val(jsonData.dance_name);
-                #('#price').val(jsonData.price);
-                #('#dance_image').append('<img src="'+jsonData.dance_image+'">');
+                $('#dance_id').val(jsonData.dance_id);
+                $('#category_id').val(jsonData.category_id);
+                $('#dance_name').val(jsonData.dance_name);
+                $('#price').val(jsonData.price);
+                $('#dance_image').append('<img src="'+jsonData.dance_image+'">');
             }
         });
     })
