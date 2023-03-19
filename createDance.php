@@ -54,12 +54,7 @@ session_start();
     <div class="container">
         <div class="col-md-3">
             <?php 
-                if(isset($_SESSION['admin_user_id'])){
-                    include('sidebar/adminSidebar.php');
-                }
-                else{
-                    include('sidebar/instructorSidebar.php');
-                }
+                include('sidebar/adminSidebar.php');
             ?>
         </div>
         <div class="col-md-9">

@@ -23,7 +23,7 @@
                         $user_id = $_SESSION['instructor_user_id'];
                         $sql= "SELECT * FROM tbl_instructors WHERE user_id = $user_id";
                         $data = mysqli_query($conn, $sql);
-                         if(mysqli_num_rows($data) > 0){
+                        if(mysqli_num_rows($data) > 0){
                             while($row = mysqli_fetch_assoc($data)){ ?>
                             <p style="text-align:center;">
                                 <img src=<?php echo $row['instructor_image']?>

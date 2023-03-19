@@ -13,13 +13,12 @@
         $sql = "INSERT INTO tbl_feedback(feedback, user_id, user_role_id) 
         VALUES('$feedback' , '$user_id' , '$role_id')";
         if(mysqli_query($conn, $sql)){
-            header('location:feedback.php');
-            $message[] = 'Feedback submitted successfully.';
+            echo 'Feedback submitted successfully.';
         }
         else{
-            header('location:feedback.php');
-            $message[] = 'Failed to submit feedback!';
+            echo 'Failed to submit feedback!';
         }
+        
     }
 
 ?>

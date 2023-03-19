@@ -112,7 +112,8 @@
                                                  $getInstructors = mysqli_query($conn, $sql);
                                                  if(mysqli_num_rows($getInstructors) >0){
                                                     while($row= mysqli_fetch_assoc($getInstructors)){?>
-                                                    <option value="<?php echo $row['instructor_id']?>"<?php echo $row['intructor_name'];?>>
+                                                    <option value="<?php echo $row['instructor_id']?>">
+                                                    <?php echo $row['instructor_name'];?>
                                                     </option>
                                                     <?php } ?>
                                                     <?php } ?>

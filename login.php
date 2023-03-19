@@ -83,17 +83,9 @@ if(isset($_POST['submit'])){
                         <input type="submit" name="submit" value="Login now" class="btn success-btn" style="width: 100%;">
                         <p>Don't have an account? <a href="register.php">Register Now</a></p>
                     </form>
-
-
               </div>
             </div>
         </div>
     </div>
-    
-
-
-
-
-
 </div>
 <?php include('inc/footer.php');?>

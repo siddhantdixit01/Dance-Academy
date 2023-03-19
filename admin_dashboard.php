@@ -16,20 +16,44 @@
         <div class="col-md-9">
             <div class="admin" style="display:flex;margin-top:10px;">
                 <div class="instructors">
-                    <i class="fa fa-users"></i>
-                    <span>Instructors (0)</span>
+                    <a href="instructors.php" class="admin-dash">
+                        <?php 
+                            $sql="SELECT * FROM tbl_instructors;";
+                            $result=mysqli_query($conn,$sql);    
+                        ?>
+                        <i class="fa fa-users"></i>
+                        <span>Instructors (<?php echo mysqli_num_rows($result); ?>)</span>
+                    </a>
                 </div>
                 <div class="students">
-                    <i class="fa fa-graduation-cap"></i>
-                    <span>Students (0)</span>
+                    <a href="students.php" class="admin-dash">
+                        <?php 
+                            $sql="SELECT * FROM tbl_students;";
+                            $result=mysqli_query($conn,$sql);    
+                        ?>
+                        <i class="fa fa-graduation-cap"></i>
+                        <span>Students (<?php echo mysqli_num_rows($result); ?>)</span>
+                    </a>
                 </div>
                 <div class="enrolled">
-                    <i class="fa fa-user-plus"></i>
-                    <span>Enrolled Last Month (0)</span>
+                    <a href="enrolledStudents.php" class="admin-dash">
+                        <?php 
+                            $sql="SELECT * FROM tbl_enrollment;";
+                            $result=mysqli_query($conn,$sql);    
+                        ?>
+                        <i class="fa fa-user-plus"></i>
+                        <span>Enrolled Students (<?php echo mysqli_num_rows($result); ?>)</span>
+                    </a>
                 </div>
                 <div class="dance_forms">
-                    <i class="fa fa-film"></i>
-                    <span>Dance Forms (0)</span>
+                <a href="createDance.php" class="admin-dash">
+                        <?php 
+                            $sql="SELECT * FROM tbl_dance_forms;";
+                            $result=mysqli_query($conn,$sql);    
+                        ?>
+                        <i class="fa fa-film"></i>
+                        <span>Dance Forms (<?php echo mysqli_num_rows($result); ?>)</span>
+                    </a>
                 </div>
             </div>
         </div>

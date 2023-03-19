@@ -8,7 +8,7 @@
         <span class="icon-field"><i class="fa fa-upload"></i>
         </span>Upload Instructor Profile
     </a>
-    <a href="createDance.php?page=createDance" class="nav-item nav-createDance">
+    <a href="instructorDanceForm.php?page=instructorDanceForm" class="nav-item nav-instructorDanceForm">
         <span class="icon-field"><i class="fa fa-plus"></i>
         </span>Dance Forms
     </a>
